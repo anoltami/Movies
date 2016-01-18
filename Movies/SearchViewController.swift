@@ -20,9 +20,11 @@ class SearchViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "MoviesListSegue") {
             if let destinationVC = segue.destinationViewController as? MoviesViewController{
                 destinationVC.searchText = SearchTextField.text
             }
+        }
     }
 
 

@@ -14,11 +14,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilmCell" rowHeight="120" id="9cV-T6-OYq" customClass="MovieViewCell" customModule="Movies" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="120" id="9cV-T6-OYq" customClass="MovieViewCell" customModule="Movies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cV-T6-OYq" id="DIc-iQ-8Ja">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOG-xT-zGV">
@@ -35,6 +35,7 @@
                                 <connections>
                                     <outlet property="Poster" destination="FOG-xT-zGV" id="Xru-X7-qxv"/>
                                     <outlet property="Title" destination="dNS-J2-BKf" id="THa-DN-GAr"/>
+                                    <segue destination="wIB-aF-eit" kind="show" identifier="MovieDetailSegue" id="yST-4g-X0L"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -48,6 +49,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esN-0F-CQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1721" y="502"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="CW3-Xg-xg5">
+            <objects>
+                <viewController id="wIB-aF-eit" customClass="MovieDetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HYV-2l-pL1"/>
+                        <viewControllerLayoutGuide type="bottom" id="UZP-lg-lfo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Azz-sz-Uz2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="co0-vj-sh6">
+                                <rect key="frame" x="20" y="72" width="137" height="197"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-LY-4pr">
+                                <rect key="frame" x="165" y="72" width="228" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chargement..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7n-yL-gvp">
+                                <rect key="frame" x="165" y="107" width="228" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-eR-Dbh">
+                                <rect key="frame" x="165" y="145" width="211" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xIQ-bF-gb8"/>
+                    <connections>
+                        <outlet property="director" destination="HkH-eR-Dbh" id="YVq-60-Nwr"/>
+                        <outlet property="filmTitle" destination="ppz-LY-4pr" id="GNj-3N-xYA"/>
+                        <outlet property="poster" destination="co0-vj-sh6" id="UuO-v4-she"/>
+                        <outlet property="year" destination="m7n-yL-gvp" id="1ee-3W-iYr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BG-Qd-za5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2580" y="502"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="uVo-UQ-EHi">
@@ -80,9 +129,11 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zhc-Y6-bcP">
                                 <rect key="frame" x="193" y="222" width="214" height="30"/>
+                                <color key="backgroundColor" red="0.30515147435443929" green="0.82078348248416844" blue="0.37619475752242443" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Valider"/>
                                 <connections>
-                                    <segue destination="IF1-jd-qgh" kind="show" identifier="MoviesSegue" id="QJy-n9-4De"/>
+                                    <segue destination="IF1-jd-qgh" kind="show" identifier="MoviesListSegue" id="QJy-n9-4De"/>
                                 </connections>
                             </button>
                         </subviews>

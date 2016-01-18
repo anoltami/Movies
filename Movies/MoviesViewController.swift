@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 struct OMDBFilms {
+    var id:String;
     var title:String;
     var imgUrl:String;
 }
@@ -19,7 +20,7 @@ class MoviesViewController: UITableViewController {
     
     var searchText:String!
     var films:Array<OMDBFilms> = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,9 +32,11 @@ class MoviesViewController: UITableViewController {
                 let filmsData = responseData["Search"]
                 
                 for (_, filmData) in filmsData {
-                    let title = filmData["Title"].string!
+                    let id = filmData["imdbID"].string!
                     let imgUrl = filmData["Poster"].string!
-                    let film = OMDBFilms(title: title, imgUrl: imgUrl)
+                    let title = filmData["Title"].string!
+
+                    let film = OMDBFilms(id: id, title: title, imgUrl: imgUrl)
                     
                     self.films.append(film)
                 }
@@ -61,7 +64,7 @@ class MoviesViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FilmCell", forIndexPath: indexPath) as! MovieViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieViewCell
         
         cell.Title.text = self.films[indexPath.row].title
         if let url = NSURL(string: self.films[indexPath.row].imgUrl) {
@@ -70,9 +73,21 @@ class MoviesViewController: UITableViewController {
             }        
         }
 
-        // Configure the cell...
-
         return cell
+    }
+
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "MovieDetailSegue") {
+            let MovieDetailviewController = segue.destinationViewController as! MovieDetailViewController
+            
+            let indexPath : NSIndexPath = self.tableView.indexPathForSelectedRow!
+            let film = self.films[indexPath.row]
+            MovieDetailviewController.filmTitleText = film.title
+            MovieDetailviewController.filmIDText = film.id
+        }
+        
     }
 
 
