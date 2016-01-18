@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RXd-wM-caq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gtF-kt-pxB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -47,25 +47,83 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esN-0F-CQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="502"/>
+            <point key="canvasLocation" x="1721" y="502"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="uVo-UQ-EHi">
+            <objects>
+                <viewController id="SqA-jS-Ayz" customClass="SearchViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8O5-r8-9oI"/>
+                        <viewControllerLayoutGuide type="bottom" id="dtY-JB-rW0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kgh-p9-dF0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quel film recherchez-vous ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkh-ZI-h2u">
+                                <rect key="frame" x="193" y="154" width="214" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="khN-y8-Akp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYB-BE-CkH">
+                                <rect key="frame" x="193" y="184" width="214" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Dtu-cT-wfA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zhc-Y6-bcP">
+                                <rect key="frame" x="193" y="222" width="214" height="30"/>
+                                <state key="normal" title="Valider"/>
+                                <connections>
+                                    <segue destination="IF1-jd-qgh" kind="show" identifier="MoviesSegue" id="QJy-n9-4De"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fkh-ZI-h2u" firstAttribute="leading" secondItem="yYB-BE-CkH" secondAttribute="leading" id="9T2-VE-hfZ"/>
+                            <constraint firstItem="fkh-ZI-h2u" firstAttribute="top" secondItem="8O5-r8-9oI" secondAttribute="bottom" constant="90" id="Abg-75-Fmd"/>
+                            <constraint firstItem="Zhc-Y6-bcP" firstAttribute="leading" secondItem="yYB-BE-CkH" secondAttribute="leading" id="JEf-Ni-J0I"/>
+                            <constraint firstItem="Zhc-Y6-bcP" firstAttribute="top" secondItem="yYB-BE-CkH" secondAttribute="bottom" constant="8" symbolic="YES" id="NRB-un-WmF"/>
+                            <constraint firstItem="fkh-ZI-h2u" firstAttribute="trailing" secondItem="yYB-BE-CkH" secondAttribute="trailing" id="YCd-oC-Faa"/>
+                            <constraint firstItem="fkh-ZI-h2u" firstAttribute="centerX" secondItem="Kgh-p9-dF0" secondAttribute="centerX" id="fHK-qq-Ebt"/>
+                            <constraint firstItem="yYB-BE-CkH" firstAttribute="top" secondItem="fkh-ZI-h2u" secondAttribute="bottom" constant="8" symbolic="YES" id="qe7-iL-ovv"/>
+                            <constraint firstItem="Zhc-Y6-bcP" firstAttribute="trailing" secondItem="yYB-BE-CkH" secondAttribute="trailing" id="z19-4O-FUE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qrk-V6-dif"/>
+                    <connections>
+                        <outlet property="SearchTextField" destination="yYB-BE-CkH" id="I8h-eI-O1V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9b-Xi-hpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="502"/>
         </scene>
         <!--Movies-->
-        <scene sceneID="hXO-ak-REk">
+        <scene sceneID="8qA-cc-CjD">
             <objects>
-                <navigationController title="Movies" automaticallyAdjustsScrollViewInsets="NO" id="RXd-wM-caq" sceneMemberID="viewController">
+                <navigationController title="Movies" automaticallyAdjustsScrollViewInsets="NO" id="gtF-kt-pxB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tFQ-Ia-Bnd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uoB-FJ-dIG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IF1-jd-qgh" kind="relationship" relationship="rootViewController" id="yx4-hR-A4V"/>
+                        <segue destination="SqA-jS-Ayz" kind="relationship" relationship="rootViewController" id="QaA-4i-l1z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UuY-4P-0b7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1X1-h6-QDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="502"/>
+            <point key="canvasLocation" x="142" y="502"/>
         </scene>
     </scenes>
 </document>

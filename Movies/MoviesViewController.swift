@@ -17,12 +17,15 @@ struct OMDBFilms {
 
 class MoviesViewController: UITableViewController {
     
+    var searchText:String!
     var films:Array<OMDBFilms> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Alamofire.request(.GET, "http://www.omdbapi.com/?s=Batman")
+        
+        self.title = "Résultat"
+        
+        Alamofire.request(.GET, "http://www.omdbapi.com/?s="+self.searchText)
             .responseData { response in
                 let responseData = JSON(data: response.data!)
                 let filmsData = responseData["Search"]
